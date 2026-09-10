@@ -95,26 +95,6 @@ Records are listed in Dihua's *History*; you can re-send, reveal in Finder, or d
   <img src="docs/assets/screenshots/dark-confirm.png" width="640" alt="Confirmation window, dark">
 </p>
 
-## Development
-
-```bash
-pnpm install        # Node 22+, pnpm 10
-pnpm dev            # electron-vite dev mode
-pnpm test           # vitest
-pnpm install:mac    # build the Share Extensions, package, ad-hoc sign, install to /Applications
-```
-
-Electron 44 · React 19 · Ant Design 6 · an Objective-C Share Extension compiled with plain `clang` (no Xcode needed). Details in [docs/开发.md](docs/开发.md) and the design notes in [docs/调研与技术方案.md](docs/调研与技术方案.md).
-
-Releases are built by GitHub Actions: push a `v*` tag that matches `package.json` and the workflow publishes the dmg/zip for both architectures.
-
-## Roadmap
-
-- More targets: Cursor, Kimi, Yuanbao, Claude Code
-- English UI (the app is currently in Simplified Chinese)
-- Signed & notarised builds
-- Windows (WeChat for Windows has the same forward feature)
-
 ## License
 
 [MIT](LICENSE) © 2026 zhanghang

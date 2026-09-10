@@ -95,26 +95,6 @@ Mac 微信 4.1.13 起，多选消息可以「转发到其他应用」，导出�
   <img src="docs/assets/screenshots/dark-confirm.png" width="640" alt="确认窗（深色）">
 </p>
 
-## 开发
-
-```bash
-pnpm install        # Node 22+，pnpm 10
-pnpm dev            # electron-vite 开发模式
-pnpm test           # vitest
-pnpm install:mac    # 编译共享扩展 → 打包 → ad-hoc 签名 → 装进 /Applications
-```
-
-Electron 44 · React 19 · Ant Design 6 · 用 `clang` 直接编译的 Objective-C 共享扩展（不需要 Xcode）。细节见 [docs/开发.md](docs/开发.md)，调研与设计见 [docs/调研与技术方案.md](docs/调研与技术方案.md)。
-
-发布由 GitHub Actions 完成：推一个与 `package.json` 版本一致的 `v*` 标签，工作流会打出两种架构的 dmg / zip 并挂到 Release。
-
-## 路线图
-
-- 更多目标：Cursor、Kimi、元宝、Claude Code
-- 英文界面（目前应用界面为简体中文）
-- 正式签名与公证
-- Windows（Windows 微信有同样的转发功能）
-
 ## 许可
 
 [MIT](LICENSE) © 2026 zhanghang
