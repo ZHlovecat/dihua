@@ -61,7 +61,7 @@ Prefer zero clicks? Enable **Send directly** and the forward menu lists each tar
   <img src="docs/assets/screenshots/light-targets.png" width="760" alt="Targets page">
 </p>
 
-More targets (Cursor, Kimi, Yuanbao…) only need a small adapter — see [docs](docs/).
+More targets (Cursor, Kimi, Yuanbao…) only need a small adapter.
 
 ## Install
 

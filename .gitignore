@@ -8,3 +8,5 @@ build/share-extension/
 .DS_Store
 # 真实微信导出，含隐私
 fixtures/raw/
+# 内部工作笔记，不上传
+docs/internal/

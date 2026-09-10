@@ -61,7 +61,7 @@ Mac 微信 4.1.13 起，多选消息可以「转发到其他应用」，导出�
   <img src="docs/assets/screenshots/light-targets.png" width="760" alt="目标应用页">
 </p>
 
-接更多目标（Cursor、Kimi、元宝……）只需要写一个很小的适配器，见 [docs](docs/)。
+接更多目标（Cursor、Kimi、元宝……）只需要写一个很小的适配器。
 
 ## 安装
 
