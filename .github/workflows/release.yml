@@ -1,0 +1,50 @@
+name: Release
+
+# 推 v* 标签就打包：标签必须和 package.json 的 version 一致（v0.0.2 ↔ 0.0.2）。
+# 产物：Dihua-<version>-arm64.dmg / -x64.dmg 及对应 zip，挂到同名 GitHub Release 上；
+# 应用内「关于 → 检查更新」读的就是这个 Release（/releases/latest）。
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-14
+    env:
+      # 没有 Developer ID 证书；打包后由 scripts/after-pack.cjs 做 ad-hoc 签名
+      CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: 标签与 package.json 版本必须一致
+        run: |
+          PKG="v$(node -p "require('./package.json').version")"
+          if [ "$PKG" != "$GITHUB_REF_NAME" ]; then
+            echo "tag $GITHUB_REF_NAME != package.json $PKG"; exit 1
+          fi
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: bash scripts/build-share-extension.sh
+      - run: pnpm exec electron-vite build
+      - run: pnpm exec electron-builder --mac dmg zip --arm64 --x64 --publish never
+      - name: 列出产物
+        run: ls -la dist
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.dmg
+            dist/*.zip
+          generate_release_notes: true
+          body: |
+            未经 Apple 公证（ad-hoc 签名）。首次打开若被拦：右键 Dihua.app → 打开，或执行
+            `xattr -d com.apple.quarantine /Applications/Dihua.app`。

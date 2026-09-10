@@ -1,0 +1,60 @@
+appId: app.dihua.desktop
+# 包名、可执行文件名、路径一律英文；界面上显示「递话」由 CFBundleDisplayName 决定
+productName: Dihua
+copyright: Copyright © 2026 zhanghang
+directories:
+  buildResources: build
+  output: dist
+files:
+  - out/**/*
+  - package.json
+  - '!**/*.map'
+asar: true
+# 没有证书时做 ad-hoc 签名（本地 pack 与 CI 都走这里）
+afterPack: scripts/after-pack.cjs
+# Share Extension：让递话出现在系统共享菜单（微信「转发到其他应用 → 选择电脑中的应用」读取的就是这个列表）。
+# 通用的「递话」弹确认窗；「递给 ChatGPT / Claude / Gemini」在开了「收到记录后直接递出去」时启用，点哪个直接递给哪个。
+extraFiles:
+  - from: build/share-extension/DihuaShare.appex
+    to: PlugIns/DihuaShare.appex
+  - from: build/share-extension/DihuaShare-codex.appex
+    to: PlugIns/DihuaShare-codex.appex
+  - from: build/share-extension/DihuaShare-claude.appex
+    to: PlugIns/DihuaShare-claude.appex
+  - from: build/share-extension/DihuaShare-gemini.appex
+    to: PlugIns/DihuaShare-gemini.appex
+mac:
+  category: public.app-category.productivity
+  target:
+    - target: dmg
+      arch: [arm64, x64]
+    - target: zip
+      arch: [arm64, x64]
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+  notarize: false
+  # Dihua-0.0.1-arm64.dmg / Dihua-0.0.1-x64.dmg：更新检查按文件名里的架构挑下载链接
+  artifactName: ${productName}-${version}-${arch}.${ext}
+  # Finder「打开方式」候选；微信的菜单不读这个，但拖到 Dock 图标、右键打开都靠它
+  fileAssociations:
+    - ext: zip
+      name: ZIP archive
+      role: Viewer
+      rank: Alternate
+  extendInfo:
+    CFBundleDisplayName: 递话
+    LSMinimumSystemVersion: '13.0'
+    NSHumanReadableCopyright: 把微信里的话，递给任何 AI
+protocols:
+  - name: Dihua
+    schemes: [dihua]
+dmg:
+  contents:
+    - x: 130
+      y: 220
+    - x: 410
+      y: 220
+      type: link
+      path: /Applications

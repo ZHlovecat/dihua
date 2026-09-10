@@ -1,0 +1,10 @@
+node_modules/
+out/
+dist/
+# 由 scripts/build-share-extension.sh 生成的 appex 与图标
+build/share-extension/
+*.log
+*.tmp
+.DS_Store
+# 真实微信导出，含隐私
+fixtures/raw/

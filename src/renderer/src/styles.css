@@ -1,0 +1,56 @@
+/* 只保留 antd 覆盖不到的窗口级行为；所有视觉样式都来自 Ant Design 组件与默认主题 */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* macOS hiddenInset 标题栏：可拖动窗口的区域 */
+.drag-region {
+  -webkit-app-region: drag;
+}
+
+.drag-region * {
+  -webkit-app-region: no-drag;
+}
+
+.selectable {
+  user-select: text;
+}
+
+.pre {
+  margin: 0;
+  font: inherit;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* 记录页：行悬停底色（颜色由 antd 令牌通过内联变量传入） */
+.history-item {
+  transition: background 0.15s;
+}
+
+.history-item:hover {
+  background: var(--history-hover);
+}
+
+/* 通用页：外观选项卡悬停抬起 */
+.theme-option {
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.theme-option:hover {
+  transform: translateY(-1px);
+}
+
+.theme-option:focus-visible {
+  outline: 2px solid var(--ant-color-primary, #1677ff);
+  outline-offset: 2px;
+}

@@ -1,0 +1,63 @@
+{
+  "name": "dihua",
+  "productName": "Dihua",
+  "version": "0.0.1",
+  "description": "把微信里的话，递给任何 AI。macOS 微信「转发到其他应用」→ 递话 → ChatGPT / Claude / Gemini 桌面端",
+  "homepage": "https://github.com/ZHlovecat/dihua",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZHlovecat/dihua.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ZHlovecat/dihua/issues"
+  },
+  "main": "./out/main/index.js",
+  "author": "zhanghang",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.web.json",
+    "test": "vitest run",
+    "pack:mac": "bash scripts/pack-mac.sh",
+    "dist:mac": "electron-vite build && electron-builder --mac",
+    "install:mac": "bash scripts/pack-mac.sh --install",
+    "build:appex": "bash scripts/build-share-extension.sh"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.3.4",
+    "antd": "^6.6.3",
+    "dayjs": "^1.11.13",
+    "electron-log": "^5.4.1",
+    "iconv-lite": "^0.6.3",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.9.0",
+    "yauzl": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/yauzl": "^2.10.3",
+    "@vitejs/plugin-react": "^5.0.0",
+    "electron": "^44.2.0",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^5.0.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.1.0",
+    "vitest": "^3.2.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "electron",
+      "esbuild",
+      "electron-winstaller"
+    ]
+  }
+}
