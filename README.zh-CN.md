@@ -41,6 +41,11 @@ Mac 微信 4.1.13 起，多选消息可以「转发到其他应用」，导出�
 
 1. **打开入口。** 递话注册了一个 macOS 共享扩展，微信「转发 → 转发到其他应用 → 选择电脑中的应用」里就会列出它。
 2. **从微信转发。** 多选任意消息——文字、图片、视频、文件——转发给「递话」。
+
+   <p align="center">
+     <img src="docs/assets/screenshots/wechat-forward-menu.png" width="640" alt="微信：转发到其他应用 → 选择电脑中的应用 → 递话">
+   </p>
+
 3. **说你的要求。** 递话打开目标应用，记录已附上、提示词已填好，接着说你要做什么，回车。
 
 <p align="center">
@@ -60,8 +65,6 @@ Mac 微信 4.1.13 起，多选消息可以「转发到其他应用」，导出�
 <p align="center">
   <img src="docs/assets/screenshots/light-targets.png" width="760" alt="目标应用页">
 </p>
-
-接更多目标（Cursor、Kimi、元宝……）只需要写一个很小的适配器。
 
 ## 安装
 

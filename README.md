@@ -41,6 +41,11 @@ WeChat for Mac (4.1.13+) can forward a batch of messages to "other apps" as a zi
 
 1. **Turn on the entry.** Dihua registers a macOS Share Extension; WeChat's *Forward → Other apps → Choose an app on this Mac* lists it.
 2. **Forward from WeChat.** Multi-select any messages — text, images, videos, files — and forward them to *Dihua*.
+
+   <p align="center">
+     <img src="docs/assets/screenshots/wechat-forward-menu.png" width="640" alt="WeChat: Forward to other apps → Choose an app on this Mac → Dihua">
+   </p>
+
 3. **Say what you want.** Dihua opens the target app with the record attached and a short prompt pre-filled. Type your request, press Enter.
 
 <p align="center">
@@ -60,8 +65,6 @@ Prefer zero clicks? Enable **Send directly** and the forward menu lists each tar
 <p align="center">
   <img src="docs/assets/screenshots/light-targets.png" width="760" alt="Targets page">
 </p>
-
-More targets (Cursor, Kimi, Yuanbao…) only need a small adapter.
 
 ## Install
 
